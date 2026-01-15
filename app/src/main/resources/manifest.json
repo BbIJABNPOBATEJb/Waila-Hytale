@@ -1,0 +1,19 @@
+{
+  "Group": "BbIJABNPOBATEJb",
+  "Name": "Waila",
+  "Version": "1.0.0",
+  "Description": "An example Hytale server plugin",
+  "Authors": [
+    {
+      "Name": "BbIJABNPOBATEJb"
+    }
+  ],
+  "Main": "me.bbijabnpobatejb.waila.WailaPlugin",
+  "ServerVersion": "*",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "Website": "https://github.com/BbIJABNPOBATEJb/Waila-Hytale",
+  "DisabledByDefault": false,
+  "IncludesAssetPack": true,
+  "SubPlugins": []
+}

@@ -1,0 +1,12 @@
+hud.mining_speed=Mining Speed: {speed}
+config.saved=[Waila] Configuration saved!
+customUI.waila.title=Waila — Config
+customUI.waila.description=Select what information to display on hover
+customUI.waila.show=Show Waila
+customUI.waila.showBlockName=Show Block Name
+customUI.waila.showModName=Show Mod Name
+customUI.waila.showId=Show Block ID
+customUI.waila.showTool=Show Mining Speed
+customUI.waila.showItemIcon=Show Item Icon
+customUI.waila.save=Save
+customUI.waila.cancel=Cancel

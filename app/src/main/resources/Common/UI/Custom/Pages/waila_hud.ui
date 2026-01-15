@@ -1,0 +1,67 @@
+$C = "../Common.ui";
+
+Group {
+  LayoutMode: Right;
+  Anchor: (Top: 20, Right: 20, Width: 300);
+
+  Group #MainContainer {
+    LayoutMode: Top;
+
+    Group {
+      LayoutMode: Left;
+      Padding: (Horizontal: 12, Vertical: 8);
+      Background: #000000(0.55);
+      Group  #Text {
+        LayoutMode: Top;
+        FlexWeight: 1;
+
+        Label #DisplayName {
+          Anchor: (Bottom: 2);
+          Style: (
+            ...$C.@DefaultLabelStyle,
+            FontSize: 14,
+            RenderBold: true,
+            TextColor: #ffffff
+          );
+          Text: "";
+        }
+
+        Label #ModId {
+          Anchor: (Bottom: 2);
+          Style: (
+            ...$C.@DefaultLabelStyle,
+            FontSize: 11,
+            TextColor: #9ca4b5
+          );
+          Text: "";
+        }
+
+        Label #BlockId {
+          Anchor: (Bottom: 2);
+          Style: (
+            ...$C.@DefaultLabelStyle,
+            FontSize: 11,
+            TextColor: #ccd1db
+          );
+          Text: "";
+        }
+
+        Label #ToolEfficiency {
+          Anchor: (Bottom: 4);
+          Style: (
+            ...$C.@DefaultLabelStyle,
+            FontSize: 11,
+            TextColor: #dde2ea
+          );
+          Text: "";
+        }
+      
+      }
+
+      ItemIcon #Icon {
+        Anchor: (Width: 32, Height: 32, Top: 0, Left: 6);
+      }
+    }
+
+  }
+}
