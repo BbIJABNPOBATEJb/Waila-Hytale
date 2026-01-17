@@ -4,4 +4,3 @@ plugins {
 }
 
 rootProject.name = "waila"
-include("app")

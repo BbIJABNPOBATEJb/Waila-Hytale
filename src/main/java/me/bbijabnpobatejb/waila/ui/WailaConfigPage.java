@@ -20,9 +20,7 @@ import com.hypixel.hytale.server.core.util.Config;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import lombok.val;
-import me.bbijabnpobatejb.waila.WailaPlugin;
 import me.bbijabnpobatejb.waila.config.WailaConfig;
-import me.bbijabnpobatejb.waila.util.LangUtil;
 
 import javax.annotation.Nonnull;
 
