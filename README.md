@@ -2,6 +2,8 @@
 
 **Waila** is a utility mod for Hytale servers that displays a tooltip at the top of the screen with information about the block the player is currently looking at. It is a server-side implementation of the classic "What Am I Looking At" mod, utilizing Hytale's Custom UI system.
 
+### Support **[MultipleHUD](https://www.curseforge.com/hytale/mods/multiplehud)**
+
 ## 🌍 Localization / Языковая поддержка
 This mod fully supports multi-language servers.
 *   🇺🇸 **English (en-US)** — Default
