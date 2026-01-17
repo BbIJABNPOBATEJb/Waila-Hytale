@@ -9,7 +9,7 @@ repositories {
     mavenCentral()
     maven {
         name = "hM"
-        url = uri("https://maven.hytale-modding.info/MultipleHUD")
+        url = uri("https://maven.hytale-modding.info/releases")
     }
 }
 
@@ -31,6 +31,8 @@ dependencies {
 
     testCompileOnly("org.projectlombok:lombok:1.18.42")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
+
+    implementation("com.buuz135:MultipleHUD:1.0.1")
 }
 tasks.register<Copy>("copyJarToMods") {
     from(tasks.jar)

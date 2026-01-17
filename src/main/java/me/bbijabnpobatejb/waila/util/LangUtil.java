@@ -31,6 +31,8 @@ public class LangUtil {
     }
     public String getTranslateKey(BlockType block) {
         val item = block.getItem();
-        return item != null ? item.getTranslationKey() : "server.items." + block.getId() + ".name";
+        val id = block.getId();
+        if (id.equalsIgnoreCase("empty")) return "";
+        return item != null ? item.getTranslationKey() : "server.items." + id + ".name";
     }
 }

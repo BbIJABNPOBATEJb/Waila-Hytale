@@ -14,21 +14,13 @@ public class WailaHudListener {
 
     public void register() {
         val registry = WailaPlugin.get().getEventRegistry();
-        registry.register(PlayerConnectEvent.class, this::onJoin);
         registry.register(PlayerDisconnectEvent.class, this::onQuit);
     }
 
-    void onJoin(PlayerConnectEvent event) {
-        val ref = event.getPlayerRef();
-        val hud = new WailaHud(ref);
-        val huds = WailaPlugin.get().getWailaHudService().getPlayerWailaHud();
-        huds.put(ref.getUuid(), hud);
 
-        event.getPlayer().getHudManager().setCustomHud(ref, hud);
-    }
 
     void onQuit(PlayerDisconnectEvent event) {
         val huds = WailaPlugin.get().getWailaHudService().getPlayerWailaHud();
-        huds.remove(event.getPlayerRef().getUuid());
+        huds.remove(event.getPlayerRef());
     }
 }

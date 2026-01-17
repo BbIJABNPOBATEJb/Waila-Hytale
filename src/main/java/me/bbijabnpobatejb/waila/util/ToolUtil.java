@@ -1,5 +1,6 @@
 package me.bbijabnpobatejb.waila.util;
 
+import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.asset.type.blocktype.config.BlockType;
 import com.hypixel.hytale.server.core.asset.type.item.config.ItemTool;
 import com.hypixel.hytale.server.core.entity.entities.Player;
@@ -38,7 +39,7 @@ public class ToolUtil {
      * Calculates the efficiency of the tool currently held by the player against the target block.
      * Returns a formatted string (localized) if valid, or null.
      */
-    public @Nullable String getToolInfo(BlockType blockType, World world, PlayerRef playerRef) {
+    public @Nullable Message getToolInfo(BlockType blockType, World world, PlayerRef playerRef) {
         val gathering = blockType.getGathering();
         if (gathering == null) return null;
 
@@ -65,10 +66,7 @@ public class ToolUtil {
 
         if (toolEfficiency <= 0f) return null;
 
-        val lang = playerRef.getLanguage();
-        val valueOf = String.valueOf(toolEfficiency);
-
-        return LangUtil.get("waila.hud.mining_speed", lang)
-                .replace("{speed}", valueOf);
+        val value = String.valueOf(toolEfficiency);
+        return Message.translation("waila.hud.mining_speed").param("speed", value);
     }
 }

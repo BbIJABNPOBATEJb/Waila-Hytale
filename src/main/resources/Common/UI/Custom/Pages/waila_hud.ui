@@ -2,7 +2,7 @@ $C = "../Common.ui";
 
 Group {
   LayoutMode: Right;
-  Anchor: (Top: 20, Right: 20, Width: 300);
+  Anchor: (Top: 20, Right: 20, Width: 400);
 
   Group #MainContainer {
     LayoutMode: Top;
