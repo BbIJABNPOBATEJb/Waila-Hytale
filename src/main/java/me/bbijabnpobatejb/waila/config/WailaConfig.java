@@ -21,6 +21,7 @@ public class WailaConfig {
     boolean showModName;
     boolean showBlockId;
     boolean showToolEfficiency;
+    boolean showCropInfo;
     boolean showItemIcon;
     double raycastDistance;
 
@@ -38,6 +39,9 @@ public class WailaConfig {
             .append(new KeyedCodec<>("ShowToolEfficiency", Codec.BOOLEAN),
                     (config, b, _) -> config.showToolEfficiency = b,
                     (config, _) -> config.showToolEfficiency).add()
+            .append(new KeyedCodec<>("ShowCropInfo", Codec.BOOLEAN),
+                    (config, b, _) -> config.showCropInfo = b,
+                    (config, _) -> config.showCropInfo).add()
             .append(new KeyedCodec<>("ShowItemIcon", Codec.BOOLEAN),
                     (config, b, _) -> config.showItemIcon = b,
                     (config, _) -> config.showItemIcon).add()
@@ -50,6 +54,6 @@ public class WailaConfig {
      * Default constructor with preset values.
      */
     public WailaConfig() {
-        this(true, true, true, false, true, true, 5.0);
+        this(true, true, true, false, true, true, true, 5.0);
     }
 }

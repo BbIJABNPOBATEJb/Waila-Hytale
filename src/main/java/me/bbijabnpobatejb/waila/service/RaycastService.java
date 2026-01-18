@@ -7,8 +7,9 @@ import com.hypixel.hytale.server.core.modules.entity.component.TransformComponen
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.chunk.WorldChunk;
-import com.hypixel.hytale.server.core.universe.world.meta.BlockState;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+import com.hypixel.hytale.component.Ref;
+import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import com.hypixel.hytale.server.core.util.TargetUtil;
 import lombok.val;
 
@@ -19,7 +20,7 @@ import javax.annotation.Nullable;
  */
 public class RaycastService {
 
-    public record RaycastResult(BlockType block) {
+    public record RaycastResult(BlockType block, Ref<ChunkStore> blockRef) {
     }
 
     /**
@@ -49,8 +50,11 @@ public class RaycastService {
 
         if (hitBlockPos != null) {
             short blockId = (short) worldChunk.getBlock(hitBlockPos.x, hitBlockPos.y, hitBlockPos.z);
-            val blockType = BlockType.getAssetMap().getAsset(blockId);
-            return new RaycastResult(blockType);
+            BlockType blockType = BlockType.getAssetMap().getAsset(blockId);
+
+            Ref<ChunkStore> blockRef = worldChunk.getBlockComponentEntity(hitBlockPos.x, hitBlockPos.y, hitBlockPos.z);
+
+            return new RaycastResult(blockType, blockRef);
         }
 
         return null;

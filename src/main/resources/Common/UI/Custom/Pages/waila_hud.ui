@@ -55,6 +55,16 @@ Group {
           );
           Text: "";
         }
+
+        Label #CropInfo {
+          Anchor: (Bottom: 6);
+          Style: (
+            ...$C.@DefaultLabelStyle,
+            FontSize: 11,
+            TextColor: #dde2ea
+          );
+          Text: "";
+        }
       
       }
 

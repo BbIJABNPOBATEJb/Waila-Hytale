@@ -7,6 +7,7 @@ customUI.waila.showBlockName=Show Block Name
 customUI.waila.showModName=Show Mod Name
 customUI.waila.showId=Show Block ID
 customUI.waila.showTool=Show Mining Speed
+customUI.waila.showCrop=Show Farming Info
 customUI.waila.showItemIcon=Show Item Icon
 customUI.waila.save=Save
 customUI.waila.cancel=Cancel

@@ -12,6 +12,7 @@ import me.bbijabnpobatejb.waila.WailaPlugin;
 import me.bbijabnpobatejb.waila.config.WailaConfig;
 import me.bbijabnpobatejb.waila.service.RaycastService;
 import me.bbijabnpobatejb.waila.ui.WailaHud;
+import me.bbijabnpobatejb.waila.util.CropUtil;
 import me.bbijabnpobatejb.waila.util.LangUtil;
 import me.bbijabnpobatejb.waila.util.ToolUtil;
 
@@ -45,17 +46,23 @@ public class WailaHudRenderer {
 
     private void updateHudOnBlock(WailaHud hud, RaycastService.RaycastResult target, PlayerRef playerRef, WailaConfig cfg, World world) {
         val block = target.block();
-        val id = block.getId();
+        val blockRef = target.blockRef();
+        String id = block.getId();
 
         val name = cfg.isShowBlockName();
         hud.setBlockName(name ? LangUtil.getTranslateKey(block) : "");
 
-        hud.setModName(cfg.isShowModName() ? RaycastService.getModSource(id) : "");
-
-
         val toolInfo = cfg.isShowToolEfficiency() ? ToolUtil.getToolInfo(block, world, playerRef) : null;
         hud.setToolEfficiency(Objects.requireNonNullElse(toolInfo, Message.empty()));
 
+        val cropInfo = cfg.isShowCropInfo() ? CropUtil.getCropInfo(block, blockRef, world, playerRef) : null;
+        hud.setCropInfo(cropInfo);
+
+        if (cropInfo != null && !cropInfo.isEmpty()) {
+            id = CropUtil.getCropItemId(block);
+        }
+
+        hud.setModName(cfg.isShowModName() ? RaycastService.getModSource(id) : "");
         hud.setBlockId(cfg.isShowBlockId() ? id : "");
         hud.setItemIcon(cfg.isShowItemIcon() ? id : "");
     }

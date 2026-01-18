@@ -93,6 +93,19 @@ $C.@PageOverlay #WailaConfigPage {
         }
       }
 
+        Group #ShowCropInfo {
+        LayoutMode: Left;
+        Anchor: (Bottom: 14);
+
+        @InputLabel {
+          Text: %waila.customUI.waila.showCrop;
+        }
+
+        $C.@CheckBox #ShowCropInfoCheck {
+          Anchor: (Width: 26, Height: 26);
+        }
+      }
+
       Group #ShowItemIcon {
         LayoutMode: Left;
         Anchor: (Bottom: 12);

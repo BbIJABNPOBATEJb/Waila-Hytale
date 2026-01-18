@@ -7,6 +7,7 @@ customUI.waila.showBlockName=Показывать название блока
 customUI.waila.showModName=Показывать ID мода
 customUI.waila.showId=Показывать ID блока
 customUI.waila.showTool=Показывать скорость добычи
+customUI.waila.showCrop=???
 customUI.waila.showItemIcon=Показывать иконку предмета
 customUI.waila.save=Сохранить
 customUI.waila.cancel=Отмена
