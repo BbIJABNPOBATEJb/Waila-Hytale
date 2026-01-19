@@ -18,6 +18,7 @@ When a player looks at a block, a HUD appears displaying the following informati
 *   **Mod Source:** Displays which namespace/mod the block belongs to (e.g., `Hytale`, `Minecraft`, etc.).
 *   **Internal ID:** Shows the registry key (e.g., `stone`).
 *   **Mining Speed:** Shows how efficient the currently held tool is against the target block.
+*   **Farming Status:** Shows current growth percentage and level.
 
 ## 📸 Screenshots
 

@@ -1,10 +1,8 @@
 package me.bbijabnpobatejb.waila.listeners;
 
-import com.hypixel.hytale.server.core.event.events.player.PlayerConnectEvent;
 import com.hypixel.hytale.server.core.event.events.player.PlayerDisconnectEvent;
 import lombok.val;
 import me.bbijabnpobatejb.waila.WailaPlugin;
-import me.bbijabnpobatejb.waila.ui.WailaHud;
 
 /**
  * Listener to handle player connection and disconnection.

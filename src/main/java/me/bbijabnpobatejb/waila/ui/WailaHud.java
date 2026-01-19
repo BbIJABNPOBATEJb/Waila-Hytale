@@ -19,6 +19,7 @@ public class WailaHud extends CustomUIHud {
     String modName = "";
     String blockId = "";
     Message toolEfficiency = Message.empty();
+    String cropInfo = "";
     String itemIcon = "";
     boolean visible = false;
 
@@ -41,6 +42,7 @@ public class WailaHud extends CustomUIHud {
         updateVisible(builder, "ModId", "Text", modName);
         updateVisible(builder, "BlockId", "Text", blockId);
         updateVisible(builder, "ToolEfficiency", toolEfficiency);
+        updateVisible(builder, "CropInfo", "Text", cropInfo);
         updateVisible(builder, "Icon", "ItemId", itemIcon);
     }
 

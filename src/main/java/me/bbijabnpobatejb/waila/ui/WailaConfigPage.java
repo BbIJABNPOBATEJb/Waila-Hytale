@@ -51,6 +51,7 @@ public class WailaConfigPage extends InteractiveCustomUIPage<WailaConfigPage.Con
         builder.set("#ShowModNameCheck.Value", config.isShowModName());
         builder.set("#ShowBlockIdCheck.Value", config.isShowBlockId());
         builder.set("#ShowToolEfficiencyCheck.Value", config.isShowToolEfficiency());
+        builder.set("#ShowCropInfoCheck.Value", config.isShowCropInfo());
         builder.set("#ShowItemIconCheck.Value", config.isShowItemIcon());
 
 
@@ -61,6 +62,7 @@ public class WailaConfigPage extends InteractiveCustomUIPage<WailaConfigPage.Con
                         .append("@ShowModName", "#ShowModNameCheck.Value")
                         .append("@ShowBlockId", "#ShowBlockIdCheck.Value")
                         .append("@ShowToolEfficiency", "#ShowToolEfficiencyCheck.Value")
+                        .append("@ShowCropInfo", "#ShowCropInfoCheck.Value")
                         .append("@ShowItemIcon", "#ShowItemIconCheck.Value")
         );
 
@@ -86,6 +88,7 @@ public class WailaConfigPage extends InteractiveCustomUIPage<WailaConfigPage.Con
         config.setShowModName(data.showModName);
         config.setShowBlockId(data.showBlockId);
         config.setShowToolEfficiency(data.showToolEfficiency);
+        config.setShowCropInfo(data.showCropInfo);
         config.setShowItemIcon(data.showItemIcon);
 
         configWrapper.save();
@@ -98,6 +101,7 @@ public class WailaConfigPage extends InteractiveCustomUIPage<WailaConfigPage.Con
         boolean showModName;
         boolean showBlockId;
         boolean showToolEfficiency;
+        boolean showCropInfo;
         boolean showItemIcon;
 
         public static final BuilderCodec<ConfigData> CODEC = BuilderCodec.builder(ConfigData.class, ConfigData::new)
@@ -107,6 +111,7 @@ public class WailaConfigPage extends InteractiveCustomUIPage<WailaConfigPage.Con
                 .append(new KeyedCodec<>("@ShowModName", Codec.BOOLEAN), (d, v) -> d.showModName = v, d -> d.showModName).add()
                 .append(new KeyedCodec<>("@ShowBlockId", Codec.BOOLEAN), (d, v) -> d.showBlockId = v, d -> d.showBlockId).add()
                 .append(new KeyedCodec<>("@ShowToolEfficiency", Codec.BOOLEAN), (d, v) -> d.showToolEfficiency = v, d -> d.showToolEfficiency).add()
+                .append(new KeyedCodec<>("@ShowCropInfo", Codec.BOOLEAN), (d, v) -> d.showCropInfo = v, d -> d.showCropInfo).add()
                 .append(new KeyedCodec<>("@ShowItemIcon", Codec.BOOLEAN), (d, v) -> d.showItemIcon = v, d -> d.showItemIcon).add()
                 .build();
     }
