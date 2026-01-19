@@ -67,6 +67,6 @@ public class ToolUtil {
         if (toolEfficiency <= 0f) return null;
 
         val value = String.valueOf(toolEfficiency);
-        return Message.translation("waila.hud.mining_speed").param("speed", value);
+        return LangUtil.formatHudText("mining_speed", "speed", value);
     }
 }

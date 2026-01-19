@@ -1,5 +1,10 @@
-hud.mining_speed=Mining Speed: {speed}
+hud.waila.mining_speed=Mining Speed: {speed}
+hud.waila.crop_stage=Stage: {generation}
+hud.waila.crop_growth_stage=Growth: {percent}% (Stage: {generation})
+hud.waila.harvestable=Harvestable
+
 config.saved=[Waila] Configuration saved!
+
 customUI.waila.title=Waila — Config
 customUI.waila.description=Select what information to display on hover
 customUI.waila.show=Show Waila

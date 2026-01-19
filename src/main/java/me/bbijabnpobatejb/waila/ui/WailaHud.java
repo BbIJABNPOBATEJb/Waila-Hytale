@@ -19,7 +19,7 @@ public class WailaHud extends CustomUIHud {
     String modName = "";
     String blockId = "";
     Message toolEfficiency = Message.empty();
-    String cropInfo = "";
+    Message cropInfo = Message.empty();
     String itemIcon = "";
     boolean visible = false;
 
@@ -32,18 +32,36 @@ public class WailaHud extends CustomUIHud {
         builder.append("Pages/waila_hud.ui");
 
         if (!visible) {
-            builder.set("#MainContainer.Visible", false);
+            visible(builder, false);
             return;
         }
+        visible(builder, true);
 
-        builder.set("#MainContainer.Visible", true);
 
         updateVisible(builder, "DisplayName", Message.translation(blockName));
         updateVisible(builder, "ModId", "Text", modName);
         updateVisible(builder, "BlockId", "Text", blockId);
         updateVisible(builder, "ToolEfficiency", toolEfficiency);
-        updateVisible(builder, "CropInfo", "Text", cropInfo);
+        updateVisible(builder, "CropInfo", cropInfo);
         updateVisible(builder, "Icon", "ItemId", itemIcon);
+
+        updateBackground(builder);
+    }
+
+    private void visible(UICommandBuilder builder, boolean b) {
+        builder.set("#Main.Visible", b);
+    }
+
+    private void updateBackground(UICommandBuilder builder) {
+        val s = "#Hud.Background";
+        if (cropInfo.getAnsiMessage().isEmpty()) {
+            builder.set(s, "Common/TooltipDefaultBackground.png");
+            builder.set(s + ".Border", 20);
+        } else {
+            builder.set(s, "Common/InputBoxSelected.png");
+            builder.set(s + ".Border", 16);
+        }
+        builder.set(s + ".Color", "#ffffffbb");
     }
 
 
@@ -62,4 +80,5 @@ public class WailaHud extends CustomUIHud {
             builder.set("#" + key + ".Text", value);
         }
     }
+
 }

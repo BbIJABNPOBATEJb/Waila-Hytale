@@ -1,5 +1,10 @@
-hud.mining_speed=Скорость добычи: {speed}
+hud.waila.mining_speed=Скорость добычи: {speed}
+hud.waila.crop_stage=Стадия: {generation}
+hud.waila.crop_growth_stage=Рост: {percent}% (Стадия: {generation})
+hud.waila.harvestable=Можно собрать
+
 config.saved=[Waila] Конфиг сохранён!
+
 customUI.waila.title=Waila — config
 customUI.waila.description=Выберите, какую информацию показывать при наведении курсора
 customUI.waila.show=Показывать Waila
@@ -7,7 +12,7 @@ customUI.waila.showBlockName=Показывать название блока
 customUI.waila.showModName=Показывать ID мода
 customUI.waila.showId=Показывать ID блока
 customUI.waila.showTool=Показывать скорость добычи
-customUI.waila.showCrop=???
+customUI.waila.showCrop=Показывать фермерскую информацию
 customUI.waila.showItemIcon=Показывать иконку предмета
 customUI.waila.save=Сохранить
 customUI.waila.cancel=Отмена

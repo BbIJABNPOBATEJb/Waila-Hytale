@@ -2,14 +2,14 @@ package me.bbijabnpobatejb.waila.service;
 
 import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;
+import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.server.core.asset.type.blocktype.config.BlockType;
 import com.hypixel.hytale.server.core.modules.entity.component.TransformComponent;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.chunk.WorldChunk;
-import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
+import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.hypixel.hytale.server.core.util.TargetUtil;
 import lombok.val;
 
@@ -47,17 +47,16 @@ public class RaycastService {
         val worldChunk = chunkRef.getStore().getComponent(chunkRef, WorldChunk.getComponentType());
         if (worldChunk == null) return null;
         val hitBlockPos = TargetUtil.getTargetBlock(reference, maxDistance, commandBuffer);
-
-        if (hitBlockPos != null) {
-            short blockId = (short) worldChunk.getBlock(hitBlockPos.x, hitBlockPos.y, hitBlockPos.z);
-            BlockType blockType = BlockType.getAssetMap().getAsset(blockId);
-
-            Ref<ChunkStore> blockRef = worldChunk.getBlockComponentEntity(hitBlockPos.x, hitBlockPos.y, hitBlockPos.z);
-
-            return new RaycastResult(blockType, blockRef);
+        if (hitBlockPos == null) {
+            return null;
         }
 
-        return null;
+        val blockType = worldChunk.getBlockType(hitBlockPos.x, hitBlockPos.y, hitBlockPos.z);
+
+        val blockRef = worldChunk.getBlockComponentEntity(hitBlockPos.x, hitBlockPos.y, hitBlockPos.z);
+
+        return new RaycastResult(blockType, blockRef);
+
     }
 
     /**

@@ -31,7 +31,7 @@ public class WailaHudRenderer {
         if (world == null) return;
 
         val cfg = WailaPlugin.get().getConfigWrapper().get();
-        val target = RaycastService.getTarget(playerRef, world, cfg.getRaycastDistance(),index,archetypeChunk,commandBuffer);
+        val target = RaycastService.getTarget(playerRef, world, cfg.getRaycastDistance(), index, archetypeChunk, commandBuffer);
 
         if (target == null || !cfg.isShow()) {
             hud.setVisible(false);
@@ -47,7 +47,8 @@ public class WailaHudRenderer {
     private void updateHudOnBlock(WailaHud hud, RaycastService.RaycastResult target, PlayerRef playerRef, WailaConfig cfg, World world) {
         val block = target.block();
         val blockRef = target.blockRef();
-        String id = block.getId();
+        val blockId = block.getId();
+        val itemId = block.getItem() != null ? block.getItem().getId() : "";
 
         val name = cfg.isShowBlockName();
         hud.setBlockName(name ? LangUtil.getTranslateKey(block) : "");
@@ -55,16 +56,16 @@ public class WailaHudRenderer {
         val toolInfo = cfg.isShowToolEfficiency() ? ToolUtil.getToolInfo(block, world, playerRef) : null;
         hud.setToolEfficiency(Objects.requireNonNullElse(toolInfo, Message.empty()));
 
-        val cropInfo = cfg.isShowCropInfo() ? CropUtil.getCropInfo(block, blockRef, world, playerRef) : null;
+        val cropInfo = cfg.isShowCropInfo() ? CropUtil.getCropInfo(block, blockRef, world, playerRef) : Message.empty();
         hud.setCropInfo(cropInfo);
 
-        if (cropInfo != null && !cropInfo.isEmpty()) {
-            id = CropUtil.getCropItemId(block);
-        }
+//        if (cropInfo != null && !cropInfo.getAnsiMessage().isEmpty()) {
+//            blockId = CropUtil.getCropItemId(block);
+//        }
 
-        hud.setModName(cfg.isShowModName() ? RaycastService.getModSource(id) : "");
-        hud.setBlockId(cfg.isShowBlockId() ? id : "");
-        hud.setItemIcon(cfg.isShowItemIcon() ? id : "");
+        hud.setModName(cfg.isShowModName() ? RaycastService.getModSource(blockId) : "");
+        hud.setBlockId(cfg.isShowBlockId() ? blockId : "");
+        hud.setItemIcon(cfg.isShowItemIcon() ? itemId : "");
     }
 
 

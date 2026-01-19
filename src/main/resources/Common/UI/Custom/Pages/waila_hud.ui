@@ -1,16 +1,15 @@
 $C = "../Common.ui";
 
-Group {
+Group #Main {
   LayoutMode: Right;
   Anchor: (Top: 20, Right: 20, Width: 400);
 
-  Group #MainContainer {
+  Group {
     LayoutMode: Top;
 
-    Group {
+    Group #Hud {
       LayoutMode: Left;
-      Padding: (Horizontal: 12, Vertical: 8);
-      Background: #000000(0.55);
+      Padding: (Full: 20);
       Group  #Text {
         LayoutMode: Top;
         FlexWeight: 1;
@@ -63,9 +62,8 @@ Group {
             FontSize: 11,
             TextColor: #dde2ea
           );
-          Text: "";
         }
-      
+
       }
 
       ItemIcon #Icon {

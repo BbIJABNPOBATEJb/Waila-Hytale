@@ -1,5 +1,6 @@
 package me.bbijabnpobatejb.waila.util;
 
+import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.asset.type.blocktype.config.BlockType;
 import com.hypixel.hytale.server.core.modules.i18n.I18nModule;
 import lombok.experimental.UtilityClass;
@@ -29,10 +30,19 @@ public class LangUtil {
 
         return translation != null ? translation : key;
     }
+
     public String getTranslateKey(BlockType block) {
         val item = block.getItem();
         val id = block.getId();
         if (id.equalsIgnoreCase("empty")) return "";
         return item != null ? item.getTranslationKey() : "server.items." + id + ".name";
+    }
+
+    public Message formatHudText(String messageId, String key, String value) {
+        return Message.translation("waila.hud.waila." + messageId).param(key, value);
+    }
+
+    public Message formatHudText(String messageId, String key1, String value1, String key2, String value2) {
+        return Message.translation("waila.hud.waila." + messageId).param(key1, value1).param(key2, value2);
     }
 }
