@@ -1,4 +1,3 @@
-# Waila (What Am I Looking At) — Hytale Mod
 
 **Waila** is a utility mod for Hytale servers that displays a tooltip at the top of the screen with information about the block the player is currently looking at. It is a server-side implementation of the classic "What Am I Looking At" mod, utilizing Hytale's Custom UI system.
 
@@ -25,13 +24,13 @@ When a player looks at a block, a HUD appears displaying the following informati
 ### In-Game HUD
 *See exactly what you are looking at with real-time updates.*
 
-<img width="1920" height="1080" alt="Hytale2026-01-16_00-26-00" src="https://github.com/user-attachments/assets/6a817d5f-6db8-4558-9c55-1e1d9f103f53" />
+<img width="1920" height="1080" alt="Hytale2026-01-19_21-45-11" src="https://github.com/user-attachments/assets/bafe54b4-4b0e-419e-9f17-ca049b7c9e6f" />
 
 ### Configuration Menu
 
 *Fully interactive in-game GUI to toggle specific information.*
 
-<img width="1920" height="1080" alt="Hytale2026-01-16_00-27-49" src="https://github.com/user-attachments/assets/a575438d-c133-46a7-9e82-c7cc3112989f" />
+<img width="1920" height="1080" alt="Hytale2026-01-19_21-55-33" src="https://github.com/user-attachments/assets/1282709e-997f-4625-a5d0-920c0145a7bf" />
 
 ## ⚙️ Configuration & Commands
 
@@ -51,3 +50,4 @@ Inside the menu, every player can customize their own experience:
 *   **Show Block ID:** Toggle the raw technical ID.
 *   **Show Mining Speed:** Toggle the tool efficiency calculator.
 *   **Show Item Icon:** Toggle the visual icon of the block.
+
