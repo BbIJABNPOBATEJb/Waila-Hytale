@@ -1,16 +1,93 @@
 $C = "../Common.ui";
 $Sounds = "../Sounds.ui";
 
-@InputLabel = Label {
-  Anchor: (Left: 6, Right: 16, Width: 280);
+@WailaInputLabel = Label {
+  Anchor: (Left: 6, Height: 16, Width: 280);
   Style: (...$C.@DefaultLabelStyle, VerticalAlignment: Center, Wrap: true);
+};
+@WailaCheckBox = CheckBox {
+  Anchor: (Width: 26, Height: 26, Right: 100);
+  Background: (TexturePath: "../Common/CheckBoxFrame.png", Border: 7);
+  Padding: (Full: 4);
+  Style: $C.@DefaultCheckBoxStyle;
+};
+@WailaCheckBoxWithLabel = Group {
+  @Checked = false;
+  LayoutMode: Left;
+  Anchor: (Bottom: 12);
+
+  @WailaInputLabel {
+    Text: @Text;
+  }
+  Group {
+    FlexWeight: 1;
+  }
+  @WailaCheckBox #CheckBox {
+    Value: @Checked;
+  }
+};
+
+@WailaSliderWithLabel = Group {
+  LayoutMode: Left;
+  Anchor: (Bottom: 12);
+
+  @WailaInputLabel {
+    Text: @Text;
+  }
+
+  Group {
+    FlexWeight: 1;
+  }
+
+  Slider  #Slider {
+    Anchor: (Width: 150,  Height: 5);
+    Style: $C.@DefaultSliderStyle;
+    Min: @Min;
+    Max: @Max;
+    Step: @Step;
+    Value: @Value;
+  }
+
+  Label #TextValue {
+    Anchor: (Right: 20, Width: 40);
+    Text: @TextValue;
+    Style: (...$C.@DefaultLabelStyle, VerticalAlignment: Center, HorizontalAlignment: End);
+  }
+};
+
+@WailaFloatSliderWithLabel = Group {
+  LayoutMode: Left;
+  Anchor: (Bottom: 12);
+
+  @WailaInputLabel {
+    Text: @Text;
+  }
+
+  Group {
+    FlexWeight: 1;
+  }
+
+  FloatSlider  #Slider {
+    Anchor: (Width: 150,  Height: 5);
+    Style: $C.@DefaultSliderStyle;
+    Min: @Min;
+    Max: @Max;
+    Step: @Step;
+    Value: @Value;
+  }
+
+  Label #TextValue {
+    Anchor: (Right: 20, Width: 40);
+    Text: @TextValue;
+    Style: (...$C.@DefaultLabelStyle, VerticalAlignment: Center, HorizontalAlignment: End);
+  }
 };
 
 $C.@PageOverlay #WailaConfigPage {
   LayoutMode: Middle;
 
   $C.@DecoratedContainer {
-    Anchor: (Width: 520);
+    Anchor: (Width: 580);
 
     #Title {
       $C.@Title {
@@ -25,105 +102,70 @@ $C.@PageOverlay #WailaConfigPage {
       Label #Description {
         Anchor: (Bottom: 16, Horizontal: 8);
         Style: (...$C.@DefaultLabelStyle, FontSize: 12, TextColor: #c0c7d1, HorizontalAlignment: Center);
-          Text: %waila.customUI.waila.description;
+        Text: %waila.customUI.waila.description;
       }
 
-      Group #Show {
-        LayoutMode: Left;
-        Anchor: (Bottom: 12);
-
-        @InputLabel {
-          Text: %waila.customUI.waila.show;
-        }
-
-        $C.@CheckBox #ShowCheck {
-          Anchor: (Width: 26, Height: 26);
-        }
+      @WailaCheckBoxWithLabel #Show {
+        @Checked = true;
+        @Text = %waila.customUI.waila.show;
       }
-
-      Group #ShowBlockName {
-        LayoutMode: Left;
-        Anchor: (Bottom: 12);
-
-        @InputLabel {
-          Text: %waila.customUI.waila.showBlockName;
-        }
-
-        $C.@CheckBox #ShowBlockNameCheck {
-          Anchor: (Width: 26, Height: 26);
-        }
+      @WailaCheckBoxWithLabel #MirrorX {
+        @Checked = false;
+        @Text = %waila.customUI.waila.mirrorX;
       }
-
-      Group #ShowModName {
-        LayoutMode: Left;
-        Anchor: (Bottom: 12);
-
-        @InputLabel {
-          Text: %waila.customUI.waila.showModName;
-        }
-
-        $C.@CheckBox #ShowModNameCheck {
-          Anchor: (Width: 26, Height: 26);
-        }
+      @WailaCheckBoxWithLabel #ShowBlockName {
+        @Checked = true;
+        @Text = %waila.customUI.waila.showBlockName;
       }
-
-      Group #ShowBlockId {
-        LayoutMode: Left;
-        Anchor: (Bottom: 12);
-
-        @InputLabel {
-          Text: %waila.customUI.waila.showId;
-        }
-
-        $C.@CheckBox #ShowBlockIdCheck {
-          Anchor: (Width: 26, Height: 26);
-        }
+      @WailaCheckBoxWithLabel #ShowModName {
+        @Checked = true;
+        @Text = %waila.customUI.waila.showModName;
       }
-
-      Group #ShowToolEfficiency {
-        LayoutMode: Left;
-        Anchor: (Bottom: 12);
-
-        @InputLabel {
-          Text: %waila.customUI.waila.showTool;
-        }
-
-        $C.@CheckBox #ShowToolEfficiencyCheck {
-          Anchor: (Width: 26, Height: 26);
-        }
+      @WailaCheckBoxWithLabel #ShowBlockId {
+        @Checked = false;
+        @Text = %waila.customUI.waila.showBlockId;
       }
-
-        Group #ShowCropInfo {
-        LayoutMode: Left;
-        Anchor: (Bottom: 14);
-
-        @InputLabel {
-          Text: %waila.customUI.waila.showCrop;
-        }
-
-        $C.@CheckBox #ShowCropInfoCheck {
-          Anchor: (Width: 26, Height: 26);
-        }
+      @WailaCheckBoxWithLabel #ShowToolEfficiency {
+        @Checked = true;
+        @Text = %waila.customUI.waila.showToolEfficiency;
       }
-
-      Group #ShowItemIcon {
-        LayoutMode: Left;
-        Anchor: (Bottom: 12);
-
-        @InputLabel {
-          Text: %waila.customUI.waila.showItemIcon;
-        }
-
-        $C.@CheckBox #ShowItemIconCheck {
-          Anchor: (Width: 26, Height: 26);
-        }
+      @WailaCheckBoxWithLabel #ShowCropInfo {
+        @Checked = true;
+        @Text = %waila.customUI.waila.showCropInfo;
+      }
+      @WailaCheckBoxWithLabel #ShowItemIcon {
+        @Checked = true;
+        @Text = %waila.customUI.waila.showItemIcon;
+      }
+      @WailaSliderWithLabel #HudOffsetX {
+        @Text = %waila.customUI.waila.hudOffsetX;
+        @Value = 20;
+        @Step = 1;
+        @Max = 1000;
+        @Min = 0;
+        @TextValue = "20";
+      }
+      @WailaSliderWithLabel #HudOffsetY {
+        @Text = %waila.customUI.waila.hudOffsetY;
+        @Value = 20;
+        @Step = 1;
+        @Max = 1000;
+        @Min = 0;
+        @TextValue = "20";
+      }
+      @WailaFloatSliderWithLabel #HudScale {
+        @Text = %waila.customUI.waila.hudScale;
+        @Value = 1.0;
+        @Step = 0.1;
+        @Max = 10.0;
+        @Min = 0.1;
+        @TextValue = "1.0";
       }
 
       Group {
         Anchor: (Vertical: 16, Height: 1);
         Background: #5e512c(0.4);
       }
-
 
       Group #Buttons {
         LayoutMode: Center;
@@ -136,7 +178,14 @@ $C.@PageOverlay #WailaConfigPage {
           FlexWeight: 1;
         }
 
-        $C.@SecondaryTextButton #CloseButton {
+        $C.@CancelTextButton #ResetButton {
+          @Sounds = $Sounds.@ButtonsCancel;
+          @Anchor = (Horizontal: 4);
+          Text: %waila.customUI.waila.reset;
+          FlexWeight: 1;
+        }
+
+        $C.@SecondaryTextButton #CancelButton {
           @Sounds = $Sounds.@ButtonsCancel;
           @Anchor = (Left: 4);
           Text: %waila.customUI.waila.cancel;

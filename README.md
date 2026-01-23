@@ -1,4 +1,3 @@
-
 **Waila** is a utility mod for Hytale servers that displays a tooltip at the top of the screen with information about the block the player is currently looking at. It is a server-side implementation of the classic "What Am I Looking At" mod, utilizing Hytale's Custom UI system.
 
 ### Support **[MultipleHUD](https://www.curseforge.com/hytale/mods/multiplehud)**
@@ -28,7 +27,7 @@ When a player looks at a block, a HUD appears displaying the following informati
 
 ### Configuration Menu
 
-*Fully interactive in-game GUI to toggle specific information.*
+*Fully interactive in-game GUI to toggle specific information and adjust HUD position.*
 
 <img width="1920" height="1080" alt="Hytale2026-01-19_21-55-33" src="https://github.com/user-attachments/assets/1282709e-997f-4625-a5d0-920c0145a7bf" />
 
@@ -44,10 +43,17 @@ You don't need to edit files manually! The mod comes with a built-in UI for conf
 
 ### Configurable Options
 Inside the menu, every player can customize their own experience:
+
+#### Content Settings
 *   **Show Waila:** Master toggle to enable/disable the HUD.
 *   **Show Block Name:** Toggle the display of the block's display name.
 *   **Show Mod Name:** Toggle the namespace identifier.
 *   **Show Block ID:** Toggle the raw technical ID.
 *   **Show Mining Speed:** Toggle the tool efficiency calculator.
+*   **Show Farming Info:** Toggle crop growth stage and harvestability status.
 *   **Show Item Icon:** Toggle the visual icon of the block.
 
+#### Visual & Layout Settings
+*   **Mirror Orientation:** Flips the HUD layout (Useful for different screen setups).
+*   **HUD Scale:** Adjust the size of the Waila tooltip.
+*   **Offset X / Y:** Finely tune the position of the HUD on your screen.

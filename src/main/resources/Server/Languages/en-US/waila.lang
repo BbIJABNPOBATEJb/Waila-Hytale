@@ -4,15 +4,21 @@ hud.waila.crop_growth_stage=Growth: {percent}% (Stage: {generation})
 hud.waila.harvestable=Harvestable
 
 config.saved=[Waila] Configuration saved!
+config.reseted=[Waila] Configuration reset to default!
 
 customUI.waila.title=Waila — Config
 customUI.waila.description=Select what information to display on hover
 customUI.waila.show=Show Waila
+customUI.waila.mirrorX=Mirror Orientation
 customUI.waila.showBlockName=Show Block Name
 customUI.waila.showModName=Show Mod Name
-customUI.waila.showId=Show Block ID
-customUI.waila.showTool=Show Mining Speed
-customUI.waila.showCrop=Show Farming Info
+customUI.waila.showBlockId=Show Block ID
+customUI.waila.showToolEfficiency=Show Mining Speed
+customUI.waila.showCropInfo=Show Farming Info
 customUI.waila.showItemIcon=Show Item Icon
+customUI.waila.hudOffsetX=Offset X
+customUI.waila.hudOffsetY=Offset Y
+customUI.waila.hudScale=HUD Scale
 customUI.waila.save=Save
+customUI.waila.reset=Reset
 customUI.waila.cancel=Cancel

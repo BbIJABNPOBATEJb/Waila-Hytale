@@ -17,6 +17,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class WailaConfig {
     boolean show;
+    boolean mirrorX;
     boolean showBlockName;
     boolean showModName;
     boolean showBlockId;
@@ -24,9 +25,18 @@ public class WailaConfig {
     boolean showCropInfo;
     boolean showItemIcon;
     double raycastDistance;
+    float hudScale;
+    int hudOffsetX;
+    int hudOffsetY;
 
     // Codec for serialization/deserialization of the config
     public static final BuilderCodec<WailaConfig> CODEC = BuilderCodec.builder(WailaConfig.class, WailaConfig::new)
+            .append(new KeyedCodec<>("Show", Codec.BOOLEAN),
+                    (config, b, _) -> config.show = b,
+                    (config, _) -> config.show).add()
+            .append(new KeyedCodec<>("MirrorX", Codec.BOOLEAN),
+                    (config, b, _) -> config.mirrorX = b,
+                    (config, _) -> config.mirrorX).add()
             .append(new KeyedCodec<>("ShowBlockName", Codec.BOOLEAN),
                     (config, b, _) -> config.showBlockName = b,
                     (config, _) -> config.showBlockName).add()
@@ -48,12 +58,21 @@ public class WailaConfig {
             .append(new KeyedCodec<>("RaycastDistance", Codec.DOUBLE),
                     (config, d, _) -> config.raycastDistance = d,
                     (config, _) -> config.raycastDistance).add()
+            .append(new KeyedCodec<>("HudScale", Codec.FLOAT),
+                    (config, f, _) -> config.hudScale = f,
+                    (config, _) -> config.hudScale).add()
+            .append(new KeyedCodec<>("HudOffsetX", Codec.INTEGER),
+                    (config, i, _) -> config.hudOffsetX = i,
+                    (config, _) -> config.hudOffsetX).add()
+            .append(new KeyedCodec<>("HudOffsetY", Codec.INTEGER),
+                    (config, i, _) -> config.hudOffsetY = i,
+                    (config, _) -> config.hudOffsetX).add()
             .build();
 
     /**
      * Default constructor with preset values.
      */
     public WailaConfig() {
-        this(true, true, true, false, true, true, true, 5.0);
+        this(true, false, true, true, false, true, true, true, 5.0, 1f, 20, 20);
     }
 }

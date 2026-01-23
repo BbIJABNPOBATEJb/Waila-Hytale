@@ -13,6 +13,9 @@ import me.bbijabnpobatejb.waila.config.WailaConfig;
 import me.bbijabnpobatejb.waila.service.WailaHudService;
 import me.bbijabnpobatejb.waila.tick.PlayerTickSystem;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.logging.Level;
@@ -34,9 +37,8 @@ public class WailaPlugin extends JavaPlugin {
 
     public WailaPlugin(JavaPluginInit init) {
         super(init);
-        instance = this;
+        WailaPlugin.instance = this;
         this.configWrapper = withConfig(WailaConfig.CODEC);
-
     }
 
     public static WailaPlugin get() {
@@ -69,5 +71,14 @@ public class WailaPlugin extends JavaPlugin {
         get().getLogger().at(Level.INFO).log(s);
     }
 
+    public void resetConfig() {
+        val resolve = getDataDirectory().resolve("config.json");
+        try {
+            Files.deleteIfExists(resolve);
+            configWrapper.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

@@ -4,6 +4,8 @@ import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.entity.entities.Player;
+import com.hypixel.hytale.server.core.ui.Anchor;
+import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
@@ -29,7 +31,6 @@ public class WailaHudRenderer {
     public void onTick(WailaHud hud, Player player, PlayerRef playerRef, int index, ArchetypeChunk<EntityStore> archetypeChunk, CommandBuffer<EntityStore> commandBuffer) {
         val world = player.getWorld();
         if (world == null) return;
-
         val cfg = WailaPlugin.get().getConfigWrapper().get();
         val target = RaycastService.getTarget(playerRef, world, cfg.getRaycastDistance(), index, archetypeChunk, commandBuffer);
 
@@ -40,7 +41,6 @@ public class WailaHudRenderer {
             hud.setVisible(!empty);
             updateHudOnBlock(hud, target, playerRef, cfg, world);
         }
-        // Trigger the UI update
         hud.show();
     }
 
@@ -58,10 +58,6 @@ public class WailaHudRenderer {
 
         val cropInfo = cfg.isShowCropInfo() ? CropUtil.getCropInfo(block, blockRef, world, playerRef) : Message.empty();
         hud.setCropInfo(cropInfo);
-
-//        if (cropInfo != null && !cropInfo.getAnsiMessage().isEmpty()) {
-//            blockId = CropUtil.getCropItemId(block);
-//        }
 
         hud.setModName(cfg.isShowModName() ? RaycastService.getModSource(blockId) : "");
         hud.setBlockId(cfg.isShowBlockId() ? blockId : "");

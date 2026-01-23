@@ -54,6 +54,16 @@ public class WailaHudService {
             return wailaHud;
         });
 
-        renderer.onTick(hud, player, playerRef,index, archetypeChunk,commandBuffer);
+        renderer.onTick(hud, player, playerRef, index, archetypeChunk, commandBuffer);
+    }
+
+    public void updatePreview(PlayerRef playerRef, boolean preview, boolean mirrorX, float guiScale, int guiOffsetX, int guiOffsetY) {
+        val wailaHud = playerWailaHud.get(playerRef);
+        if (wailaHud == null) return;
+        wailaHud.setPreview(preview);
+        wailaHud.setMirrorX(mirrorX);
+        wailaHud.setPreviewGuiScale(guiScale);
+        wailaHud.setPreviewGuiOffsetX(guiOffsetX);
+        wailaHud.setPreviewGuiOffsetY(guiOffsetY);
     }
 }

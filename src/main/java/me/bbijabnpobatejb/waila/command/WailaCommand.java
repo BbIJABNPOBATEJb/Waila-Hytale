@@ -1,9 +1,14 @@
 package me.bbijabnpobatejb.waila.command;
 
+import com.hypixel.hytale.component.Ref;
+import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.command.system.AbstractCommand;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
+import com.hypixel.hytale.server.core.command.system.basecommands.AbstractPlayerCommand;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
+import com.hypixel.hytale.server.core.universe.world.World;
+import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import lombok.val;
 import me.bbijabnpobatejb.waila.WailaPlugin;
 import me.bbijabnpobatejb.waila.ui.WailaConfigPage;
@@ -15,30 +20,23 @@ import java.util.concurrent.CompletableFuture;
  * Command to open the Waila configuration menu.
  * Usage: /waila
  */
-public class WailaCommand extends AbstractCommand {
+public class WailaCommand extends AbstractPlayerCommand {
     public WailaCommand() {
         super("waila", "Waila configuration");
         requirePermission("waila.command.waila");
     }
 
     @Override
-    protected CompletableFuture<Void> execute(@Nonnull CommandContext context) {
-        val sender = context.sender();
-        if (sender instanceof Player player) {
-            // Execute on the world thread to ensure thread safety when accessing components
-            player.getWorld().execute(() -> {
-                val ref = player.getReference();
-                val store = ref.getStore();
-                val playerRefComponent = store.getComponent(ref, PlayerRef.getComponentType());
-                val config = WailaPlugin.get().getConfigWrapper();
+    protected void execute(@Nonnull CommandContext context, @Nonnull Store<EntityStore> store,
+                           @Nonnull Ref<EntityStore> ref, @Nonnull PlayerRef playerRef, @Nonnull World world) {
+        val player = store.getComponent(ref, Player.getComponentType());
+        assert (player != null);
+        val config = WailaPlugin.get().getConfigWrapper();
 
-                player.getPageManager().openCustomPage(
-                        player.getReference(),
-                        store,
-                        new WailaConfigPage(playerRefComponent, config)
-                );
-            });
-        }
-        return CompletableFuture.completedFuture(null);
+        player.getPageManager().openCustomPage(
+                ref,
+                store,
+                new WailaConfigPage(playerRef, config)
+        );
     }
 }
