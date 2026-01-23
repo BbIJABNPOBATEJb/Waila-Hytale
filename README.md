@@ -29,7 +29,7 @@ When a player looks at a block, a HUD appears displaying the following informati
 
 *Fully interactive in-game GUI to toggle specific information and adjust HUD position.*
 
-<img width="1920" height="1080" alt="Hytale2026-01-19_21-55-33" src="https://github.com/user-attachments/assets/1282709e-997f-4625-a5d0-920c0145a7bf" />
+<img width="1920" height="1080" alt="Hytale2026-01-24_02-18-02" src="https://github.com/user-attachments/assets/075a12b3-36a5-4c4d-b2ca-94dfac0a747d" />
 
 ## ⚙️ Configuration & Commands
 
@@ -56,4 +56,5 @@ Inside the menu, every player can customize their own experience:
 #### Visual & Layout Settings
 *   **Mirror Orientation:** Flips the HUD layout (Useful for different screen setups).
 *   **HUD Scale:** Adjust the size of the Waila tooltip.
+
 *   **Offset X / Y:** Finely tune the position of the HUD on your screen.
