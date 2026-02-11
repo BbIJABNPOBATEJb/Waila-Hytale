@@ -12,6 +12,8 @@ import com.hypixel.hytale.server.core.universe.world.storage.ChunkStore;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.hypixel.hytale.server.core.util.TargetUtil;
 import lombok.val;
+import me.bbijabnpobatejb.waila.WailaPlugin;
+import me.bbijabnpobatejb.waila.util.Owners;
 
 import javax.annotation.Nullable;
 
@@ -59,12 +61,11 @@ public class RaycastService {
 
     }
 
-    /**
-     * Extracts the mod source from a block ID (e.g., "minecraft:dirt" -> "Minecraft").
-     */
     public static String getModSource(String blockId) {
-        if (blockId == null || !blockId.contains(":")) return "Hytale";
-        String modId = blockId.split(":")[0];
-        return Character.toUpperCase(modId.charAt(0)) + modId.substring(1);
+        val identifier = Owners.blockOwner(blockId);
+        if (identifier == null) {
+            return "";
+        }
+        return identifier.getName();
     }
 }

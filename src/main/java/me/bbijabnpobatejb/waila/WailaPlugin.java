@@ -1,6 +1,7 @@
 package me.bbijabnpobatejb.waila;
 
 import com.hypixel.hytale.common.plugin.PluginIdentifier;
+import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.core.plugin.PluginManager;
@@ -12,6 +13,7 @@ import me.bbijabnpobatejb.waila.command.WailaCommand;
 import me.bbijabnpobatejb.waila.config.WailaConfig;
 import me.bbijabnpobatejb.waila.service.WailaHudService;
 import me.bbijabnpobatejb.waila.tick.PlayerTickSystem;
+import me.bbijabnpobatejb.waila.util.Owners;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -28,6 +30,8 @@ import static lombok.AccessLevel.PRIVATE;
 @Getter
 @FieldDefaults(level = PRIVATE, makeFinal = true)
 public class WailaPlugin extends JavaPlugin {
+
+    public static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
 
     static WailaPlugin instance;
     Config<WailaConfig> configWrapper;
@@ -60,6 +64,7 @@ public class WailaPlugin extends JavaPlugin {
         val plugin = PluginManager.get().getPlugin(PluginIdentifier.fromString("Buuz135:MultipleHUD"));
         val multipleHUD = plugin != null;
         wailaHudService.start(multipleHUD);
+        Owners.reload();
     }
 
     @Override
