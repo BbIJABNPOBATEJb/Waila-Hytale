@@ -32,7 +32,7 @@ dependencies {
     testCompileOnly("org.projectlombok:lombok:1.18.42")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.42")
 
-    implementation("com.buuz135:MultipleHUD:1.0.1")
+    implementation("com.buuz135:MultipleHUD:1.0.4")
 }
 tasks.register<Copy>("copyJarToMods") {
     from(tasks.jar)

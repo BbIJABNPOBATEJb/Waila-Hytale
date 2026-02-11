@@ -2,7 +2,7 @@
   "Group": "BbIJABNPOBATEJb",
   "Name": "Waila",
   "Version": "1.0.3",
-  "Description": "An example Hytale server plugin",
+  "Description": "Waila is a utility mod for Hytale servers that displays a tooltip at the top of the screen with information about the block the player is currently looking at",
   "Authors": [
     {
       "Name": "BbIJABNPOBATEJb"
@@ -11,7 +11,8 @@
   "Main": "me.bbijabnpobatejb.waila.WailaPlugin",
   "ServerVersion": "*",
   "Dependencies": {},
-  "OptionalDependencies": {},
+  "OptionalDependencies": {
+  },
   "Website": "https://github.com/BbIJABNPOBATEJb/Waila-Hytale",
   "DisabledByDefault": false,
   "IncludesAssetPack": true,

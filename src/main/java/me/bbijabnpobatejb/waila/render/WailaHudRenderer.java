@@ -4,8 +4,6 @@ import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.entity.entities.Player;
-import com.hypixel.hytale.server.core.ui.Anchor;
-import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
@@ -28,7 +26,7 @@ public class WailaHudRenderer {
     /**
      * Called periodically to update the HUD for a specific player.
      */
-    public void onTick(WailaHud hud, Player player, PlayerRef playerRef, int index, ArchetypeChunk<EntityStore> archetypeChunk, CommandBuffer<EntityStore> commandBuffer) {
+    public void onTick(WailaHud hud, Player player, PlayerRef playerRef, int index, ArchetypeChunk<EntityStore> archetypeChunk, CommandBuffer<EntityStore> commandBuffer, boolean multipleHUD) {
         val world = player.getWorld();
         if (world == null) return;
         val cfg = WailaPlugin.get().getConfigWrapper().get();
@@ -41,7 +39,9 @@ public class WailaHudRenderer {
             hud.setVisible(!empty);
             updateHudOnBlock(hud, target, playerRef, cfg, world);
         }
-        hud.show();
+        if (!multipleHUD) {
+            hud.show();
+        }
     }
 
     private void updateHudOnBlock(WailaHud hud, RaycastService.RaycastResult target, PlayerRef playerRef, WailaConfig cfg, World world) {

@@ -40,21 +40,24 @@ public class WailaHudService {
      */
     public void start(boolean multipleHUD) {
         this.multipleHUD = multipleHUD;
-        WailaPlugin.info("Found MultipleHUD plugin. Enable multiple mode");
+        val dop = multipleHUD ? " Enable multiple mode" : "";
+        WailaPlugin.info("Found MultipleHUD plugin." + dop);
     }
 
-    public void onTick(Player player, PlayerRef playerRef, int index, ArchetypeChunk<EntityStore> archetypeChunk, CommandBuffer<EntityStore> commandBuffer) {
-        val hud = playerWailaHud.computeIfAbsent(playerRef, _ -> {
-            val wailaHud = new WailaHud(playerRef);
-            if (multipleHUD) {
-                MultipleHUD.getInstance().setCustomHud(player, playerRef, "wailaHud", wailaHud);
-            } else {
-                player.getHudManager().setCustomHud(playerRef, wailaHud);
-            }
-            return wailaHud;
-        });
 
-        renderer.onTick(hud, player, playerRef, index, archetypeChunk, commandBuffer);
+    public void onTick(Player player, PlayerRef playerRef, int index, ArchetypeChunk<EntityStore> archetypeChunk, CommandBuffer<EntityStore> commandBuffer) {
+
+        val wailaHud = playerWailaHud.computeIfAbsent(playerRef, WailaHud::new);
+        val canShow = (player.getWindowManager().getWindows().isEmpty() && player.getPageManager().getCustomPage() == null);
+        if (!canShow) return;
+
+        renderer.onTick(wailaHud, player, playerRef, index, archetypeChunk, commandBuffer,multipleHUD);
+
+        if (multipleHUD) {
+            MultipleHUD.getInstance().setCustomHud(player, playerRef, "WailaMain", wailaHud);
+        } else {
+            player.getHudManager().setCustomHud(playerRef, wailaHud);
+        }
     }
 
     public void updatePreview(PlayerRef playerRef, boolean preview, boolean mirrorX, float guiScale, int guiOffsetX, int guiOffsetY) {

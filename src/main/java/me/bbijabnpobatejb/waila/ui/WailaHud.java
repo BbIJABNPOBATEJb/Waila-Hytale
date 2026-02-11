@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.val;
 import me.bbijabnpobatejb.waila.WailaPlugin;
 
+
 /**
  * Represents the HUD element shown on the client screen.
  */
@@ -38,7 +39,7 @@ public class WailaHud extends CustomUIHud {
     }
 
     @Override
-    public void build(UICommandBuilder builder) {
+    protected void build(UICommandBuilder builder) {
         builder.append("Pages/waila_hud.ui");
 
         if (!visible) {
